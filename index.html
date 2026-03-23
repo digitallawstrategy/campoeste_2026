@@ -322,7 +322,6 @@
 
         const MenuApp = () => {
             const [activeDay, setActiveDay] = useState('quinta');
-            const [imageError, setImageError] = useState(false);
 
             useEffect(() => {
                 const activeBtn = document.getElementById(`tab-${activeDay}`);
@@ -338,28 +337,18 @@
             return (
                 <div className="min-h-screen font-sans selection:bg-yellow-300 pb-12">
                     
-                    {/* Header Hero com Tratamento de Imagem Local */}
+                    {/* Header Hero com Imagem Direta */}
                     <header className="pt-16 pb-12 px-5 relative text-center">
                         <div className="max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0ms' }}>
                             
                             <div className="relative mb-8 flex flex-col items-center justify-center min-h-[250px]">
                                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-yellow-400 blur-[80px] opacity-40 rounded-full animate-pulse-glow z-0"></div>
                                 
-                                {imageError && (
-                                    <div className="relative z-10 flex flex-col items-center justify-center p-6 border-2 border-dashed border-yellow-500/50 rounded-3xl bg-black/30 backdrop-blur-md w-64 md:w-80">
-                                        <Shield className="w-16 h-16 text-yellow-500 mb-3 opacity-80 animate-float" />
-                                        <p className="text-yellow-400 font-bold text-lg tracking-tight">Arte do Campori</p>
-                                        <p className="text-stone-300 text-xs text-center mt-2 font-medium">
-                                            O preview bloqueia arquivos locais. <br/>Baixe o HTML e coloque junto ao seu <b>image.png</b>.
-                                        </p>
-                                    </div>
-                                )}
-
+                                {/* Chamada direta para o ficheiro image.png */}
                                 <img 
-                                    src="./image.png" 
+                                    src="image.png" 
                                     alt="Logotipo IV Campori MBSo" 
-                                    className={`relative w-64 md:w-80 h-auto object-contain animate-float drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] z-20 ${imageError ? 'hidden' : 'block'}`}
-                                    onError={() => setImageError(true)}
+                                    className="relative w-64 md:w-80 h-auto object-contain animate-float drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] z-20"
                                 />
                             </div>
                             
