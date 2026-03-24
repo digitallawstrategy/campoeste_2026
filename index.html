@@ -18,7 +18,7 @@
 
     <style>
         :root {
-            /* Paleta inspirada no Apple Dark Mode com toques em ouro/âmbar */
+            /* Paleta Apple Dark Mode com toques em ouro/âmbar */
             --bg-base: #000000;
             --bg-elevated: #1c1c1e;
             --text-primary: #f2f2f7;
@@ -45,7 +45,7 @@
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- Fundo Premium Estático e Limpo --- */
+        /* --- Fundo Premium --- */
         .bg-mesh {
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(245, 176, 20, 0.04), transparent 35%),
@@ -81,7 +81,7 @@
             opacity: 0;
         }
 
-        /* --- Efeito Glassmorphism (Padrão iOS Material) --- */
+        /* --- Efeito Glassmorphism --- */
         .glass-card {
             background: rgba(28, 28, 30, 0.65);
             backdrop-filter: blur(24px);
@@ -136,81 +136,77 @@
             </svg>
         );
 
-        // --- DADOS DO CARDÁPIO PADRONIZADO E SEM SOPA ---
+        // --- DADOS DO CARDÁPIO (Transcrição do PDF com correção no Domingo) ---
         const menuData = [
             {
                 id: 'quinta',
-                day: 'Quinta',
+                day: 'Quinta-Feira',
                 date: '08/10',
                 theme: 'Chegada & Acolhimento',
                 icon: <MapPin className="w-5 h-5 text-blue-400" />,
                 meals: {
                     breakfast: {
-                        title: 'Café da Manhã de Quinta',
+                        title: 'Café da Manhã',
                         items: [
-                            { label: 'Recepção', value: 'Pão francês, pão de forma e torradas' },
-                            { label: 'Complementos', value: 'Frios variados, manteiga e geleia' },
-                            { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Café forte, leite e achocolatado' }
+                            { label: 'BASE', value: 'Pão francês, pão de forma e torradas' },
+                            { label: 'COMPLEM.', value: 'Frios variados, manteiga e geleia' },
+                            { label: 'FRUTA', value: 'Frutas da estação' },
+                            { label: 'BEBIDAS', value: 'Café, leite e achocolatado' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço de Quinta',
+                        title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz branco, arroz integral e feijão' },
-                            { label: 'Prato Principal', value: 'Iscas Douradas Aceboladas', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Iscas de frango aceboladas na chapa', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Iscas de Proteína de Soja (PTS) grossa', type: 'veg' },
-                            { label: 'Acompanhamento', value: 'Farofa nutritiva e salada de folhas verdes' }
+                            { label: 'BASE', value: 'Arroz Branco, Arroz Integral e Feijão' },
+                            { label: 'PRATOS', value: 'Tradicional: Iscas de frango aceboladas\nVegetariano: Iscas de Proteína de Soja (PTS)' },
+                            { label: 'GUARNIÇÃO', value: 'Farofa nutritiva' },
+                            { label: 'SALADA', value: 'Mix de folhas verdes' }
                         ]
                     },
                     dinner: {
-                        title: 'Jantar de Quinta',
+                        title: 'Jantar',
                         items: [
-                            { label: 'Prato Principal', value: 'Panquecas de Forno', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Panquecas recheadas com carne moída', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Panquecas recheadas com queijo e milho', type: 'veg' },
-                            { label: 'Acompanhamento', value: 'Arroz branco soltinho e salada fresca' }
+                            { label: 'PRINCIPAL', value: 'Torta Cremosa de Forno' },
+                            { label: 'RECHEIOS', value: 'Tradicional: Frango com requeijão\nVegetariano: Palmito, milho e azeitonas' },
+                            { label: 'ACOMP.', value: 'Salada fresca' },
+                            { label: 'SOBREMESA', value: 'Fruta da estação' }
                         ]
                     }
                 }
             },
             {
                 id: 'sexta',
-                day: 'Sexta',
+                day: 'Sexta-Feira',
                 date: '09/10',
                 theme: 'Convivência',
                 icon: <Star className="w-5 h-5 text-yellow-400" />,
                 meals: {
                     breakfast: {
-                        title: 'Café da Manhã de Sexta',
+                        title: 'Café da Manhã',
                         items: [
-                            { label: 'Base', value: 'Pão com Patê e Geleia' },
-                            { label: 'Proteína', value: 'Ovos mexidos temperados' },
-                            { label: 'Bolo', value: 'Bolo Caseiro' },
-                            { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Leite ou Chá' }
+                            { label: 'BASE', value: 'Pão com Patê e Geleia' },
+                            { label: 'PROTEÍNA', value: 'Ovos mexidos temperados' },
+                            { label: 'BOLO', value: 'Bolo Caseiro' },
+                            { label: 'FRUTA', value: 'Frutas da estação' },
+                            { label: 'BEBIDAS', value: 'Leite ou Chá' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço de Sexta',
+                        title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz Branco e Feijão' },
-                            { label: 'Prato Principal', value: 'Rocambole ao Forno Gratinado', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Rocambole de carne ao forno', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Rocambole de proteína vegetal ao forno', type: 'veg' },
-                            { label: 'Guarnição', value: 'Farofa Crocante' },
-                            { label: 'Salada', value: 'Salada Refrescante (Pepino e Tomate)' }
+                            { label: 'BASE', value: 'Arroz Branco, Feijão' },
+                            { label: 'PRATOS', value: 'Tradicional: Rocambole ao Forno Gratinado\nVegetariano: Rocambole de Proteína ao Forno Gratinado' },
+                            { label: 'GUARNIÇÃO', value: 'Farofa Crocante' },
+                            { label: 'SALADA', value: 'Salada Refrescante (Pepino e Tomate)' }
                         ]
                     },
                     dinner: {
-                        title: 'Jantar de Sexta',
+                        title: 'Jantar',
                         items: [
-                            { label: 'Prato Único', value: 'Macarronada Especial', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Molho à Bolonhesa', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Molho Branco c/ Queijo ou Sugo Rico', type: 'veg' },
-                            { label: 'Dica', value: 'Queijo ralado à vontade' },
-                            { label: 'Bebida', value: 'Suco de Frutas' }
+                            { label: 'PRATO ÚNICO', value: 'Macarronada Especial' },
+                            { label: 'MOLHOS', value: 'Tradicional: Molho à Bolonhesa\nVegetariano: Molho Branco c/ Queijo ou Sugo Rico' },
+                            { label: 'DICA', value: 'Queijo ralado à vontade' },
+                            { label: 'BEBIDA', value: 'Suco de Frutas' }
                         ]
                     }
                 }
@@ -223,33 +219,30 @@
                 icon: <Sun className="w-5 h-5 text-amber-400" />,
                 meals: {
                     breakfast: {
-                        title: 'Café da Manhã de Sábado',
+                        title: 'Café da Manhã',
                         items: [
-                            { label: 'Base', value: 'Pães variados' },
-                            { label: 'Bolo', value: 'Bolo do Dia (Sabor Caseiro)' },
-                            { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Leite com chocolate e suco' }
+                            { label: 'BASE', value: 'Pães variados' },
+                            { label: 'BOLO', value: 'Bolo do Dia (Sabor Caseiro)' },
+                            { label: 'FRUTA', value: 'Frutas da estação' },
+                            { label: 'BEBIDAS', value: 'Leite com chocolate, suco' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço de Sábado',
+                        title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz Branco, Arroz Integral e Feijão' },
-                            { label: 'Prato Principal', value: 'Strogonoff Cremoso', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Strogonoff de frango cremoso', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Strogonoff Vegetariano (Soja e Grão de Bico)', type: 'veg' },
-                            { label: 'Guarnição', value: 'Abóbora Cabotiá refogada' },
-                            { label: 'Salada', value: 'Folhas frescas e Vegetais' }
+                            { label: 'BASE', value: 'Arroz Branco, Arroz Integral, Feijão' },
+                            { label: 'PRATOS', value: 'Tradicional: Strogonoff de frango cremoso\nVegetariano: Strogonoff Vegetariano (Soja e Grão de Bico)' },
+                            { label: 'GUARNIÇÃO', value: 'Abóbora Cabotiá refogada' },
+                            { label: 'SALADA', value: 'Folhas frescas e Vegetais' }
                         ]
                     },
                     dinner: {
-                        title: 'Jantar de Sábado',
+                        title: 'Jantar',
                         items: [
-                            { label: 'Prato Principal', value: 'Escondidinho de Batata Cremoso', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Recheio de Carne Moída Especial', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Recheio de Proteína de Soja c/ Azeitonas', type: 'veg' },
-                            { label: 'Acompanhamento', value: 'Arroz Branco soltinho' },
-                            { label: 'Sobremesa', value: 'Frutas da estação' }
+                            { label: 'PRINCIPAL', value: 'Escondidinho de batata Cremoso (Gratinado)' },
+                            { label: 'RECHEIOS', value: 'Tradicional: Opção Tradicional\nVegetariano: Opção Vegetariana' },
+                            { label: 'ACOMP.', value: 'Arroz Branco soltinho' },
+                            { label: 'SOBREMESA', value: 'Frutas da estação' }
                         ]
                     }
                 }
@@ -262,70 +255,65 @@
                 icon: <Flame className="w-5 h-5 text-red-500" />,
                 meals: {
                     breakfast: {
-                        title: 'Café da Manhã de Domingo',
+                        title: 'Café da Manhã Regional',
                         items: [
-                            { label: 'Estrela', value: 'Cuscuz Nordestino' },
-                            { label: 'Proteína', value: 'Ovos mexidos com queijo' },
-                            { label: 'Base', value: 'Biscoitos variados' },
-                            { label: 'Bebidas', value: 'Suco de fruta e Café de cevada' }
+                            { label: 'ESTRELA', value: 'Cuscuz Nordestino' },
+                            { label: 'PROTEÍNA', value: 'Ovos mexidos com queijo' },
+                            { label: 'BASE', value: 'Biscoitos variados' },
+                            { label: 'BEBIDAS', value: 'Suco de fruta e Café de cevada' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço de Domingo',
+                        title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz à Grega e Feijão' },
-                            { label: 'Prato Principal', value: 'Almôndegas ao Molho', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Almôndega Especial com Legumes', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Almôndegas de Soja ao molho com Queijo', type: 'veg' },
-                            { label: 'Guarnição', value: 'Purê de Batata' },
-                            { label: 'Salada', value: 'Salada de Repolho tropical' },
-                            { label: 'Bebida', value: 'Suco de Fruta' }
+                            { label: 'BASE', value: 'Arroz à Grega e Feijão' },
+                            { label: 'PRATOS', value: 'Tradicional: Almôndega Especial com Legumes\nVegetariano: Almôndegas de Soja ao molho com Queijo' },
+                            { label: 'GUARNIÇÃO', value: 'Purê de Batata' },
+                            { label: 'SALADA', value: 'Salada de Repolho tropical' },
+                            { label: 'BEBIDA', value: 'Suco de Fruta' }
                         ]
                     },
                     dinner: {
-                        title: 'Jantar de Domingo',
+                        title: 'Jantar',
                         items: [
-                            { label: 'Prato Único', value: 'Torta Salgada de Liquidificador', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Recheio farto de frango desfiado com milho', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Recheio de legumes, azeitonas e queijo', type: 'veg' },
-                            { label: 'Acompanhamento', value: 'Salada de folhas frescas com tomate' },
-                            { label: 'Fruta', value: 'Fruta da estação' }
+                            { label: 'PRINCIPAL', value: 'Torta de Liquidificador', highlight: true },
+                            { label: 'TRADICIONAL', value: 'Recheio de frango', type: 'meat' },
+                            { label: 'VEGETARIANO', value: 'Recheio de queijo e milho', type: 'veg' },
+                            { label: 'ACOMP.', value: 'Arroz branco soltinho e salada' },
+                            { label: 'BEBIDA', value: 'Suco de Fruta' }
                         ]
                     }
                 }
             },
             {
                 id: 'segunda',
-                day: 'Segunda',
+                day: 'Segunda-Feira',
                 date: '12/10',
-                theme: 'Encerramento & Viagem',
+                theme: 'Encerramento',
                 icon: <MapPin className="w-5 h-5 text-emerald-400" />,
                 meals: {
                     breakfast: {
-                        title: 'Café da Manhã de Segunda',
+                        title: 'Café da Manhã',
                         items: [
-                            { label: 'Especial', value: 'Mesa de Despedida (biscoitos, pães e frutas)' },
-                            { label: 'Quente', value: 'Canjica de leite' },
-                            { label: 'Bebida', value: 'Suco de Frutas' }
+                            { label: 'ESPECIAL', value: 'Mesa de Despedida (biscoitos, pães, frutas)' },
+                            { label: 'QUENTE', value: 'Canjica de leite' },
+                            { label: 'BEBIDA', value: 'Suco de Frutas' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço de Segunda',
+                        title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz Branco e Feijão' },
-                            { label: 'Prato Principal', value: 'Fricassê Cremoso ao Forno', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Fricassê Tradicional (Frango e Milho)', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Fricassê Vegetariano (Palmito e Milho)', type: 'veg' },
-                            { label: 'Salada', value: 'Vinagrete da Casa' }
+                            { label: 'BASE', value: 'Arroz Branco e Feijão' },
+                            { label: 'PRATOS', value: 'Tradicional: Fricassê Cremoso Tradicional\nVegetariano: Fricassê Cremoso Vegetariano (Palmito/Milho)' },
+                            { label: 'SALADA', value: 'Vinagrete da Casa' }
                         ]
                     },
                     dinner: {
-                        title: 'Jantar de Segunda',
+                        title: 'Kit Viagem',
                         items: [
-                            { label: 'Lanche', value: 'Sanduíche Natural de Viagem', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Patê Cremoso de Frango', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Patê de Cenoura com Ervas', type: 'veg' },
-                            { label: 'Fruta', value: 'Frutas para viagem' }
+                            { label: 'LANCHE', value: 'Sanduíche Natural' },
+                            { label: 'RECHEIOS', value: 'Tradicional: Patê Cremoso de Frango\nVegetariano: Patê de Cenoura com Ervas' },
+                            { label: 'FRUTA', value: 'Frutas para viagem' }
                         ]
                     }
                 }
@@ -333,7 +321,6 @@
         ];
 
         // --- COMPONENTES ANIMADOS ---
-
         const MenuItem = ({ label, value, type, highlight, index }) => {
             let badgeClass = "";
             let textClass = "text-[var(--text-primary)]";
@@ -352,7 +339,6 @@
                 textClass = "text-[var(--text-secondary)] font-normal text-[14px] md:text-[15px]";
             }
 
-            // Animação CSS baseada no índice para efeito em cascata
             const animationDelay = `${(index * 60) + 150}ms`;
 
             return (
@@ -375,7 +361,7 @@
                             </span>
                         )}
                     </div>
-                    <div className={`leading-relaxed ${textClass}`}>
+                    <div className={`leading-relaxed ${textClass} whitespace-pre-line`}>
                         {value}
                     </div>
                 </div>
@@ -407,7 +393,6 @@
             );
         };
 
-        // --- CABEÇALHO DO DIA ---
         const DayHeader = ({ dayData }) => {
             const formatFullDate = (dateString) => {
                 const [day, month] = dateString.split('/');
@@ -415,13 +400,11 @@
                 return `${day} de ${months[month] || 'Outubro'}`;
             };
 
-            const dayName = `${dayData.day}${['quinta', 'sexta', 'segunda'].includes(dayData.id.toLowerCase()) ? '-feira' : ''}`;
-
             return (
                 <div className="mb-6 flex items-center justify-between animate-slide-up" style={{animationDelay: '50ms'}}>
                     <div>
                         <h2 className="text-[22px] md:text-[26px] font-serif font-normal text-white tracking-tight flex flex-col md:flex-row md:items-baseline md:gap-2.5">
-                            <span>{dayName}</span>
+                            <span>{dayData.day}</span>
                             <span className="text-[13px] md:text-[15px] text-[var(--accent-gold)] font-sans font-medium tracking-wide opacity-90 mt-0.5 md:mt-0">
                                 {formatFullDate(dayData.date)}
                             </span>
@@ -439,7 +422,6 @@
             );
         };
         
-        // --- BOTÃO DO WHATSAPP ---
         const FloatingWhatsAppButton = () => {
             const phoneNumber = "5577999052417";
             const message = encodeURIComponent("Olá! Gostaria de falar sobre o cardápio e fazer uma reserva na Cantina da Neta para o Campori 2026.");
@@ -464,7 +446,6 @@
             const [activeTab, setActiveTab] = useState(menuData[0].id);
             const contentRef = useRef(null);
 
-            // Handler para trocar de aba e garantir que o scroll suba e a aba centralize
             const handleTabChange = (dayId) => {
                 setActiveTab(dayId);
                 
@@ -486,9 +467,7 @@
             return (
                 <div className="min-h-screen selection:bg-[var(--accent-gold)]/30 text-[var(--text-primary)] font-sans antialiased">
                     
-                    {/* Header Topo */}
                     <header className="pt-10 pb-6 px-5 max-w-2xl mx-auto flex flex-col items-center justify-center animate-header">
-                        
                         <div className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md text-[var(--accent-gold)] px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.1em] mb-6 border border-white/5">
                             <Utensils className="w-3 h-3" />
                             <span>Cantina da Neta</span>
@@ -496,7 +475,7 @@
 
                         <div className="flex items-center justify-center gap-4 mb-4">
                             <img 
-                                src="./compori.jpg" 
+                                src="compori.jpg" 
                                 alt="Logo" 
                                 className="w-12 md:w-14 h-auto object-contain drop-shadow-md"
                                 onError={(e) => {
@@ -516,7 +495,6 @@
                         </p>
                     </header>
 
-                    {/* Navigation Tabs (Fixas no topo) */}
                     <div className="sticky top-0 z-50 glass-nav w-full shadow-md">
                         <div 
                             id="tabs-container"
@@ -553,7 +531,6 @@
                         </div>
                     </div>
 
-                    {/* Main Content Area */}
                     <main ref={contentRef} className="max-w-2xl mx-auto px-5 pt-8 pb-28 relative z-10" key={activeTab}>
                         
                         <DayHeader dayData={currentDayData} />
@@ -587,7 +564,6 @@
                             )}
                         </div>
 
-                        {/* Footer Minimalista */}
                         <div className="mt-10 mb-8 flex flex-col items-center justify-center text-center animate-slide-up opacity-60" style={{animationDelay: '300ms'}}>
                             <Leaf className="w-5 h-5 text-[var(--text-secondary)] mb-2" />
                             <p className="text-[var(--text-tertiary)] text-[11px] uppercase tracking-[0.1em] font-medium">
@@ -597,7 +573,6 @@
 
                     </main>
 
-                    {/* Botão Flutuante */}
                     <FloatingWhatsAppButton />
                 </div>
             );
