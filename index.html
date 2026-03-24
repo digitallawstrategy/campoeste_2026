@@ -14,16 +14,17 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 
     <style>
         body { 
-            font-family: 'Noto Sans', sans-serif; 
+            font-family: 'Montserrat', sans-serif; 
             -webkit-tap-highlight-color: transparent;
-            background-color: #0f172a;
+            background-color: #0b1120;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            color: #f8fafc;
         }
         h1, h2, h3, .font-serif { 
             font-family: 'Playfair Display', serif; 
@@ -32,64 +33,60 @@
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- Fundo Animado Premium --- */
-        .bg-dynamic {
-            background: linear-gradient(-45deg, #1e3a8a, #7f1d1d, #9a3412, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* --- Fundo Premium --- */
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(234, 179, 8, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(220, 38, 38, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(234, 179, 8, 0.1) 0px, transparent 50%);
+            background-color: #0b1120;
+            background-attachment: fixed;
         }
 
-        /* --- Animações de Entrada --- */
+        /* --- Animações --- */
         @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-slide-up {
-            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
         .animate-float {
-            animation: float 4s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
-        }
-        .animate-pulse-glow {
-            animation: pulseGlow 2s infinite;
-        }
-
-        /* --- Efeito Glassmorphism --- */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+        /* --- Efeito Glassmorphism Elegante --- */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         
         .glass-nav {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(250, 204, 21, 0.2);
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(234, 179, 8, 0.2);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="bg-dynamic text-stone-800">
+<body class="bg-mesh">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -107,24 +104,26 @@
         const Sun = ({ className }) => <IconBase className={className}><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></IconBase>;
         const Moon = ({ className }) => <IconBase className={className}><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></IconBase>;
         const MapPin = ({ className }) => <IconBase className={className}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></IconBase>;
-        const Calendar = ({ className }) => <IconBase className={className}><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></IconBase>;
         const Star = ({ className }) => <IconBase className={className}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></IconBase>;
-        const Biceps = ({ className }) => <IconBase className={className}><path d="M20.4 18.9c.2.5-.1 1.2-.6 1.3l-1.9.4c-5.5 1.1-11.1-.4-15.4-4.1-.4-.4-.5-1-.2-1.4l1.2-1.6c.3-.4 1-.5 1.4-.2 3.6 2.4 8.2 3.5 12.6 2.4l1.9-.4c.5-.1 1.1.2 1.2.7z"/><path d="M8 7.3A5 5 0 0 1 12 5a5 5 0 0 1 4 2.3c1.4 2.1 2 4.6 1.8 7.1l-.2 1.7"/></IconBase>;
+        const Flame = ({ className }) => <IconBase className={className}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></IconBase>;
+        const Utensils = ({ className }) => <IconBase className={className}><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></IconBase>;
 
-        // --- DADOS DO CARDÁPIO (100% Ovolactovegetariano) ---
+        // --- DADOS DO CARDÁPIO ATUALIZADO (Opções Tradicionais e Veg) ---
         const menuData = [
             {
                 id: 'quinta',
                 day: 'Quinta',
                 date: '08/10',
                 theme: 'Chegada & Acolhimento',
-                icon: <MapPin className="w-8 h-8 text-blue-500 animate-float" />,
+                icon: <MapPin className="w-8 h-8 text-blue-400 animate-float" />,
                 meals: {
                     dinner: {
                         title: 'Jantar de Recepção',
                         items: [
-                            { label: 'Prato Único', value: 'Sopa Creme de Legumes Rústica' },
-                            { label: 'Complementos', value: 'Torradinhas crocantes' },
+                            { label: 'Prato Principal', value: 'Torta Cremosa de Forno' },
+                            { label: 'Opção Tradicional', value: 'Recheio farto de Frango Desfiado com requeijão', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Recheio de Palmito, milho e azeitonas', type: 'veg' },
+                            { label: 'Acompanhamento', value: 'Sopa Creme de Legumes Rústica com torradinhas' },
                             { label: 'Sobremesa', value: 'Fruta da estação' }
                         ]
                     }
@@ -135,33 +134,34 @@
                 day: 'Sexta',
                 date: '09/10',
                 theme: 'Abertura de Campo',
-                icon: <Star className="w-8 h-8 text-yellow-500 animate-float" />,
+                icon: <Star className="w-8 h-8 text-yellow-400 animate-float" />,
                 meals: {
                     breakfast: {
                         title: 'Café da Manhã',
                         items: [
-                            { label: 'Base', value: 'Pão com Patê e Geleia' },
+                            { label: 'Base', value: 'Pão francês fresquinho com Patê e Geleia' },
                             { label: 'Proteína', value: 'Ovos mexidos temperados' },
-                            { label: 'Bolo', value: 'Bolo Caseiro' },
-                            { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Leite ou Chá' }
+                            { label: 'Complementos', value: 'Bolo Caseiro e Frutas da estação' },
+                            { label: 'Bebidas', value: 'Leite quente, achocolatado ou Chá' }
                         ]
                     },
                     lunch: {
                         title: 'Almoço Turbinado',
                         items: [
-                            { label: 'Base', value: 'Arroz Branco e Feijão de caldo grosso' },
-                            { label: 'Energia Pura', value: 'Ovos fritos/mexidos turbinados e Muita Batata Rústica Assada', sustancia: true },
-                            { label: 'Acompanhamento', value: 'Farofa Crocante de Alho (Caprichada na textura)' },
-                            { label: 'Salada', value: 'Salada Refrescante (Pepino e Tomate)' }
+                            { label: 'O Clássico', value: 'Arroz Branco e Feijão de caldo grosso' },
+                            { label: 'Prato Principal', value: 'Lasanha Farta ao Forno', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Lasanha à Bolonhesa (Carne Moída Rica) com bastante queijo', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Lasanha de Proteína de Soja temperada ao Sugo', type: 'veg' },
+                            { label: 'Acompanhamento', value: 'Salpicão Refrescante (Opção tradicional com frango e opção 100% vegetariana)' }
                         ]
                     },
                     dinner: {
                         title: 'Jantar',
                         items: [
-                            { label: 'Prato Único', value: 'Macarronada Especial' },
-                            { label: 'Molho Vegetariano', value: 'Molho Branco com Queijo ou Sugo Rico' },
-                            { label: 'Dica', value: 'Queijo ralado à vontade' },
+                            { label: 'Prato Principal', value: 'Strogonoff Cremoso', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Strogonoff de Frango suculento', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Strogonoff Vegetariano (Grão de bico, palmito e cogumelos)', type: 'veg' },
+                            { label: 'Acompanhamentos', value: 'Arroz Branco soltinho e Muita Batata Palha' },
                             { label: 'Bebida', value: 'Suco de Frutas' }
                         ]
                     }
@@ -172,34 +172,36 @@
                 day: 'Sábado',
                 date: '10/10',
                 theme: 'Dia de Guarda',
-                icon: <Sun className="w-8 h-8 text-yellow-400 animate-float" />,
+                icon: <Sun className="w-8 h-8 text-amber-400 animate-float" />,
                 meals: {
                     breakfast: {
-                        title: 'Café da Manhã',
+                        title: 'Café da Manhã Especial',
                         items: [
-                            { label: 'Base', value: 'Pães variados' },
+                            { label: 'Mesa Farta', value: 'Pães variados (Doce e Salgado)' },
                             { label: 'Bolo', value: 'Bolo do Dia (Sabor Caseiro)' },
-                            { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Leite com chocolate, suco' }
+                            { label: 'Fruta', value: 'Salada de frutas frescas' },
+                            { label: 'Bebidas', value: 'Leite, suco natural e achocolatado' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço Turbinado',
+                        title: 'Almoço de Sábado',
                         items: [
-                            { label: 'Base', value: 'Arroz Branco, Arroz Integral, Feijão' },
-                            { label: 'Prato Principal', value: 'Strogonoff Vegetariano cremoso (Proteína de soja e Grão de Bico)' },
-                            { label: 'Energia Pura', value: 'Montanha de Batata Palha e Ovos Cozidos Temperados', sustancia: true },
-                            { label: 'Guarnição', value: 'Abóbora Cabotiá refogada' },
-                            { label: 'Salada', value: 'Folhas frescas e Vegetais' }
+                            { label: 'Prato Principal', value: 'Escondidinho Especial', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Escondidinho de Carne Moída bem temperada, gratinado com queijo', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Escondidinho de Proteína de soja com azeitonas e ervas', type: 'veg' },
+                            { label: 'Acompanhamento Supremo', value: 'Batata Gratinada aos quatro queijos' },
+                            { label: 'Base', value: 'Arroz Branco, Arroz Integral e Feijão' },
+                            { label: 'Salada', value: 'Mix de folhas frescas e Vegetais' }
                         ]
                     },
                     dinner: {
                         title: 'Jantar',
                         items: [
-                            { label: 'Prato Principal', value: 'Escondidinho de batata Cremoso (Gratinado com Queijo)' },
-                            { label: 'Recheio', value: 'Opção Vegetariana Especial com Cogumelos' },
-                            { label: 'Acompanhamento', value: 'Arroz Branco soltinho' },
-                            { label: 'Sobremesa', value: 'Frutas da estação' }
+                            { label: 'Prato Principal', value: 'Almôndegas ao Molho Sugo', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Almôndegas de Carne Moída suculentas', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Almôndegas de Soja/Grão de bico ricas em proteína', type: 'veg' },
+                            { label: 'Acompanhamento', value: 'Purê de Batata 🥔 bem cremoso e amanteigado' },
+                            { label: 'Base', value: 'Arroz Branco soltinho' }
                         ]
                     }
                 }
@@ -209,33 +211,35 @@
                 day: 'Domingo',
                 date: '11/10',
                 theme: 'Aventura & Atividades',
-                icon: <Biceps className="w-8 h-8 text-red-500 animate-float" />,
+                icon: <Flame className="w-8 h-8 text-red-500 animate-float" />,
                 meals: {
                     breakfast: {
                         title: 'Café da Manhã Regional',
                         items: [
-                            { label: 'Estrela', value: 'Cuscuz Nordestino' },
-                            { label: 'Proteína', value: 'Ovos mexidos com queijo' },
-                            { label: 'Base', value: 'Biscoitos variados' },
-                            { label: 'Bebidas', value: 'Suco de fruta e Café de cevada' }
+                            { label: 'A Estrela', value: 'Cuscuz Nordestino' },
+                            { label: 'Proteína', value: 'Ovos mexidos cremosos com queijo' },
+                            { label: 'Complemento', value: 'Biscoitos variados e pães' },
+                            { label: 'Bebidas', value: 'Suco de fruta e Café de cevada quente' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço Turbinado',
+                        title: 'Almoço do Desbravador',
                         items: [
-                            { label: 'Base', value: 'Arroz à Grega e Feijão' },
-                            { label: 'Prato Principal', value: 'Almôndegas de Proteína de Soja ao molho com Queijo' },
-                            { label: 'Energia Pura', value: 'Purê de Batata farto e Farofa Rica de Ovos', sustancia: true },
-                            { label: 'Salada', value: 'Salada de Repolho tropical' },
-                            { label: 'Bebida', value: 'Suco de Fruta' }
+                            { label: 'Base', value: 'Arroz à Grega colorido e Feijão' },
+                            { label: 'Prato Principal', value: 'Fricassê Cremoso ao Forno', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Fricassê de Frango desfiado com requeijão e milho', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Fricassê de Palmito com creme de milho', type: 'veg' },
+                            { label: 'Acompanhamento', value: 'Batata Palha Extra e Farofa Rica' },
+                            { label: 'Salada', value: 'Salada de Repolho tropical com abacaxi' }
                         ]
                     },
                     dinner: {
                         title: 'Jantar Extra',
                         items: [
-                            { label: 'Prato Único', value: 'Rocambole de Proteína ao Forno Gratinado com Queijo e Legumes' },
-                            { label: 'Acompanhamento', value: 'Arroz Branco e Salada Refrescante' },
-                            { label: 'Bebida', value: 'Suco Natural' }
+                            { label: 'Prato Único', value: 'Macarronada de Domingo' },
+                            { label: 'Molhos', value: 'Bolonhesa (Carne Moída) e Sugo Tradicional (Veg)' },
+                            { label: 'Dica', value: 'Queijo parmesão ralado à vontade' },
+                            { label: 'Bebida', value: 'Suco Natural gelado' }
                         ]
                     }
                 }
@@ -245,31 +249,31 @@
                 day: 'Segunda',
                 date: '12/10',
                 theme: 'Encerramento & Viagem',
-                icon: <MapPin className="w-8 h-8 text-emerald-500 animate-float" />,
+                icon: <MapPin className="w-8 h-8 text-emerald-400 animate-float" />,
                 meals: {
                     breakfast: {
                         title: 'Café de Despedida',
                         items: [
-                            { label: 'Especial', value: 'Mesa de Despedida (biscoitos, pães, frutas)' },
-                            { label: 'Quente', value: 'Canjica de leite' },
-                            { label: 'Bebida', value: 'Suco de Frutas' }
+                            { label: 'Mesa Farta', value: 'Mesa de Despedida com todos os biscoitos, pães e frutas' },
+                            { label: 'Especial Quente', value: 'Canjica de leite doce' },
+                            { label: 'Bebidas', value: 'Suco de Frutas e Achocolatado' }
                         ]
                     },
                     lunch: {
-                        title: 'Almoço Turbinado',
+                        title: 'Almoço de Fechamento',
                         items: [
-                            { label: 'Base', value: 'Arroz Branco e Feijão' },
-                            { label: 'Prato Principal', value: 'Fricassê Cremoso Vegetariano (Palmito/Legumes com Creme de Milho)' },
-                            { label: 'Energia Pura', value: 'Batata Palha Extra e Ovos Fritos Fatiados no Azeite', sustancia: true },
+                            { label: 'Prato Rápido', value: 'Panquecas Recheadas Gratindas' },
+                            { label: 'Opções', value: 'Carne Moída, Frango e Queijo (Veg)' },
+                            { label: 'Acompanhamento', value: 'Arroz Branco, Feijão e Ovos Fritos Fatiados no Azeite' },
                             { label: 'Salada', value: 'Vinagrete da Casa' }
                         ]
                     },
                     dinner: {
                         title: 'Kit Viagem',
                         items: [
-                            { label: 'Kit Lanche', value: 'Sanduíche Natural' },
-                            { label: 'Recheio', value: 'Patê de Cenoura com Ervas' },
-                            { label: 'Fruta', value: 'Frutas para viagem' }
+                            { label: 'Kit Lanche', value: 'Sanduíche Natural caprichado' },
+                            { label: 'Opções de Recheio', value: 'Frango desfiado cremoso e Patê de Cenoura com Ervas (Veg)' },
+                            { label: 'Complemento', value: 'Frutas para a viagem (Maçã/Banana)' }
                         ]
                     }
                 }
@@ -278,39 +282,66 @@
 
         // --- COMPONENTES ---
 
-        const MenuItem = ({ label, value, sustancia }) => (
-            <div className="mb-4 last:mb-0 group">
-                <span className="block text-[11px] uppercase tracking-widest text-stone-400 font-bold mb-1 transition-colors group-hover:text-stone-600">
-                    {label}
-                </span>
-                <div className={`text-sm md:text-base leading-relaxed transition-all duration-300 ${
-                    sustancia 
-                    ? 'bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-3 rounded-r-xl text-stone-800 font-bold shadow-sm' 
-                    : 'text-stone-700 font-medium'
-                }`}>
-                    {sustancia && <Biceps className="w-5 h-5 inline mr-2 text-yellow-600 -mt-1" />}
-                    {value}
+        const MenuItem = ({ label, value, type, highlight }) => {
+            let badgeClass = "";
+            let textClass = "text-slate-200";
+            let bgClass = "";
+
+            if (type === 'meat') {
+                badgeClass = "bg-red-500/20 text-red-300 border border-red-500/30";
+                textClass = "text-red-100 font-medium";
+            } else if (type === 'veg') {
+                badgeClass = "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                textClass = "text-emerald-100 font-medium";
+            } else if (highlight) {
+                bgClass = "bg-gradient-to-r from-yellow-500/10 to-transparent border-l-4 border-yellow-500 pl-4 py-2 my-2 rounded-r-lg";
+                textClass = "text-yellow-100 font-bold text-lg";
+            }
+
+            return (
+                <div className={`mb-5 last:mb-0 group ${bgClass}`}>
+                    <div className="flex items-center gap-3 mb-1.5">
+                        <span className="text-[11px] uppercase tracking-widest text-slate-400 font-bold transition-colors group-hover:text-yellow-400">
+                            {label}
+                        </span>
+                        {type === 'meat' && (
+                            <span className={`text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-wider ${badgeClass}`}>
+                                Opção com Carne
+                            </span>
+                        )}
+                        {type === 'veg' && (
+                            <span className={`text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-wider ${badgeClass}`}>
+                                Opção Veg
+                            </span>
+                        )}
+                    </div>
+                    <div className={`text-sm md:text-base leading-relaxed ${textClass}`}>
+                        {value}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        };
 
         const MealSection = ({ title, items, icon: Icon, delay }) => {
             if (!items) return null;
             
             return (
                 <div 
-                    className="glass-panel rounded-3xl p-6 md:p-8 mb-8 animate-slide-up hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 border-t-4 border-t-yellow-400"
+                    className="glass-card rounded-3xl p-6 md:p-8 mb-8 animate-slide-up hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
                     style={{ animationDelay: `${delay}ms` }}
                 >
-                    <div className="flex items-center gap-4 mb-6 pb-4 border-b border-stone-200">
-                        <div className="p-3 bg-gradient-to-br from-yellow-100 to-amber-100 rounded-2xl text-yellow-700 shadow-inner">
+                    {/* Linha de destaque lateral */}
+                    <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-yellow-400 to-amber-600 opacity-80"></div>
+                    
+                    <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
+                        <div className="p-3 bg-white/5 rounded-2xl text-yellow-400 shadow-inner group-hover:bg-yellow-400/10 transition-colors">
                             <Icon className="w-6 h-6" />
                         </div>
-                        <h3 className="font-serif text-2xl md:text-3xl text-stone-900 font-bold tracking-tight">
+                        <h3 className="font-serif text-2xl md:text-3xl text-white font-bold tracking-tight">
                             {title}
                         </h3>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                         {items.map((item, idx) => (
                             <MenuItem key={idx} {...item} />
                         ))}
@@ -334,49 +365,49 @@
             const currentDayData = menuData.find(d => d.id === activeDay);
 
             return (
-                <div className="min-h-screen font-sans selection:bg-yellow-300 pb-12">
+                <div className="min-h-screen selection:bg-yellow-500/30 pb-12">
                     
                     {/* Header Hero */}
                     <header className="pt-16 pb-12 px-5 relative text-center">
                         <div className="max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0ms' }}>
                             
-                            <div className="relative mb-8 flex flex-col items-center justify-center min-h-[250px]">
-                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-yellow-400 blur-[80px] opacity-40 rounded-full animate-pulse-glow z-0"></div>
+                            <div className="relative mb-10 flex flex-col items-center justify-center min-h-[250px]">
+                                {/* Glow atrás da logo */}
+                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-amber-500/30 blur-[100px] rounded-full z-0"></div>
                                 
-                                {/* Fallback Ativo: Se falhar localmente, injeta direto do repositório público do GitHub. 
-                                  Força bruta e redundância funcional.
-                                */}
+                                {/* Imagem com Fallback configurado para compori.png */}
                                 <img 
-                                    src="./image.png" 
+                                    src="./compori.png" 
                                     alt="Logotipo IV Campori MBSo" 
-                                    className="relative w-64 md:w-80 h-auto object-contain animate-float drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] z-20"
+                                    className="relative w-72 md:w-[350px] h-auto object-contain animate-float drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-10"
                                     onError={(e) => {
-                                        const fallbackUrl = 'https://raw.githubusercontent.com/digitallawstrategy/campoeste_2026/main/image.png';
+                                        const fallbackUrl = 'https://raw.githubusercontent.com/digitallawstrategy/campoeste_2026/main/compori.png';
                                         if (e.target.src !== fallbackUrl) {
                                             e.target.src = fallbackUrl;
                                         } else {
-                                            e.target.style.display = 'none'; // Desiste apenas se a Microsoft/GitHub falhar
+                                            e.target.style.display = 'none';
                                         }
                                     }}
                                 />
                             </div>
                             
-                            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-yellow-400 px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest mb-6 border border-yellow-400/30 shadow-xl">
+                            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md text-yellow-400 px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest mb-6 border border-yellow-400/20 shadow-[0_0_20px_rgba(234,179,8,0.1)]">
+                                <Utensils className="w-4 h-4" />
                                 Cantina da Neta
                             </div>
                             
-                            <h1 className="font-serif text-4xl md:text-6xl font-black mb-4 text-white tracking-tight drop-shadow-lg leading-tight">
-                                CARDÁPIO OFICIAL
+                            <h1 className="font-serif text-4xl md:text-6xl font-black mb-4 text-white tracking-tight drop-shadow-2xl leading-tight">
+                                CARDÁPIO <span className="gold-gradient-text">OFICIAL</span>
                             </h1>
                             
-                            <p className="text-yellow-100 text-lg md:text-xl italic font-serif max-w-lg mx-auto leading-relaxed drop-shadow-md">
+                            <p className="text-slate-300 text-lg md:text-xl italic font-serif max-w-lg mx-auto leading-relaxed drop-shadow-md">
                                 "A maior conquista exige a melhor energia."
                             </p>
                         </div>
                     </header>
 
                     {/* Navigation Tabs (Sticky e Elegante) */}
-                    <div className="sticky top-0 z-50 glass-nav w-full shadow-lg">
+                    <div className="sticky top-0 z-50 glass-nav w-full shadow-2xl">
                         <div 
                             id="tabs-container"
                             className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 py-4 md:justify-center"
@@ -388,15 +419,15 @@
                                         id={`tab-${day.id}`}
                                         onClick={() => setActiveDay(day.id)}
                                         className={`
-                                            snap-center relative px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 flex items-center gap-3 select-none
+                                            snap-center relative px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 flex items-center gap-3 select-none overflow-hidden
                                             ${activeDay === day.id 
-                                                ? 'bg-gradient-to-r from-yellow-500 to-amber-600 text-white shadow-[0_10px_20px_rgba(217,119,6,0.4)] transform scale-105 border-b-4 border-amber-700' 
-                                                : 'text-stone-300 bg-white/5 hover:bg-white/20 hover:text-white border-b-4 border-transparent'}
+                                                ? 'bg-gradient-to-r from-yellow-500 to-amber-600 text-slate-900 shadow-[0_10px_25px_rgba(245,158,11,0.4)] transform scale-105' 
+                                                : 'text-slate-300 bg-white/5 hover:bg-white/10 hover:text-white border border-white/5'}
                                         `}
                                     >
-                                        <div className="flex flex-col text-left">
+                                        <div className="flex flex-col text-left relative z-10">
                                             <span className="leading-none text-base">{day.day}</span>
-                                            <span className={`text-[10px] uppercase tracking-widest mt-1.5 font-black ${activeDay === day.id ? 'text-yellow-100' : 'text-stone-400'}`}>
+                                            <span className={`text-[10px] uppercase tracking-widest mt-1.5 font-black opacity-80`}>
                                                 {day.date}
                                             </span>
                                         </div>
@@ -410,18 +441,18 @@
                     <main className="max-w-3xl mx-auto px-5 pt-12 pb-16 relative z-10">
                         
                         <div className="text-center mb-12" key={`header-${activeDay}`}>
-                            <div className="flex justify-center mb-4">
-                                <div className="p-4 bg-white/10 backdrop-blur-sm rounded-full shadow-lg border border-white/20 animate-slide-up" style={{animationDelay: '100ms'}}>
+                            <div className="flex justify-center mb-5">
+                                <div className="p-4 bg-slate-800/50 backdrop-blur-md rounded-full shadow-xl border border-white/10 animate-slide-up" style={{animationDelay: '100ms'}}>
                                     {currentDayData.icon}
                                 </div>
                             </div>
                             
-                            <h2 className="text-4xl md:text-5xl font-serif font-black text-white drop-shadow-md mb-4 animate-slide-up" style={{animationDelay: '150ms'}}>
+                            <h2 className="text-4xl md:text-5xl font-serif font-black text-white drop-shadow-lg mb-4 animate-slide-up" style={{animationDelay: '150ms'}}>
                                 {currentDayData.day}{['quinta', 'sexta', 'segunda'].includes(currentDayData.id) ? '-Feira' : ''}
                             </h2>
                             
                             {currentDayData.theme && (
-                                <div className="inline-flex items-center gap-2 px-5 py-2 bg-yellow-500 text-yellow-900 rounded-xl text-sm md:text-base font-black tracking-widest uppercase shadow-lg animate-slide-up" style={{animationDelay: '200ms'}}>
+                                <div className="inline-flex items-center gap-2 px-5 py-2 bg-slate-800 border border-slate-700 text-slate-300 rounded-xl text-sm md:text-base font-bold tracking-widest uppercase shadow-lg animate-slide-up" style={{animationDelay: '200ms'}}>
                                     {currentDayData.theme}
                                 </div>
                             )}
@@ -458,13 +489,15 @@
                         </div>
 
                         {/* Footer Elegante */}
-                        <div className="mt-16 p-10 glass-panel rounded-[2rem] text-center animate-slide-up border-t-8 border-t-yellow-500" style={{animationDelay: '600ms'}}>
-                            <Leaf className="w-10 h-10 text-green-600 mx-auto mb-4 fill-current opacity-90" />
-                            <p className="text-stone-800 font-serif font-bold text-xl md:text-2xl mb-2">
-                                "Energia limpa, prato cheio e sem burocracia."
+                        <div className="mt-16 p-10 glass-card rounded-[2rem] text-center animate-slide-up relative overflow-hidden" style={{animationDelay: '600ms'}}>
+                            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-red-500"></div>
+                            
+                            <Leaf className="w-10 h-10 text-emerald-400 mx-auto mb-5 fill-current opacity-80" />
+                            <p className="text-white font-serif font-bold text-xl md:text-2xl mb-3 drop-shadow-md">
+                                "Energia farta, cardápio flexível e mesa cheia."
                             </p>
-                            <p className="text-stone-500 text-xs md:text-sm mt-4 uppercase tracking-widest font-black">
-                                Planejamento Ovolactovegetariano • Cantina da Neta
+                            <p className="text-slate-400 text-xs md:text-sm mt-5 uppercase tracking-widest font-bold">
+                                Opções Tradicionais & Vegetarianas • Cantina da Neta
                             </p>
                         </div>
 
