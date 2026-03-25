@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Campori 2026 - Cantina da Neta</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Fontes: Inter (Corpo) e Lora (Títulos) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Paleta Apple Dark Mode com toques em ouro/âmbar */
+            /* Paleta inspirada no Apple Dark Mode com toques em ouro/âmbar */
             --bg-base: #000000;
             --bg-elevated: #1c1c1e;
             --text-primary: #f2f2f7;
@@ -45,7 +42,7 @@
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- Fundo Premium --- */
+        /* --- Fundo Premium Estático e Limpo --- */
         .bg-mesh {
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(245, 176, 20, 0.04), transparent 35%),
@@ -81,7 +78,7 @@
             opacity: 0;
         }
 
-        /* --- Efeito Glassmorphism --- */
+        /* --- Efeito Glassmorphism (Padrão iOS Material) --- */
         .glass-card {
             background: rgba(28, 28, 30, 0.65);
             backdrop-filter: blur(24px);
@@ -186,32 +183,32 @@
                     breakfast: {
                         title: 'Café da Manhã',
                         items: [
-                            { label: 'Base', value: 'Pão com patê e geleia' },
+                            { label: 'Base', value: 'Pão com Patê e Geleia' },
                             { label: 'Proteína', value: 'Ovos mexidos temperados' },
-                            { label: 'Bolo', value: 'Bolo caseiro' },
+                            { label: 'Bolo', value: 'Bolo Caseiro' },
                             { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Leite ou chá' }
+                            { label: 'Bebidas', value: 'Leite ou Chá' }
                         ]
                     },
                     lunch: {
                         title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz branco e feijão' },
+                            { label: 'Base', value: 'Arroz Branco, Feijão' },
                             { label: 'Prato Principal', value: 'Rocambole ao Forno Gratinado', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Rocambole de carne', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Rocambole de proteína de soja', type: 'veg' },
-                            { label: 'Acompanhamento', value: 'Farofa crocante' },
-                            { label: 'Salada', value: 'Salada refrescante (pepino e tomate)' }
+                            { label: 'Opção Tradicional', value: 'Rocambole de Carne ao Forno', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Rocambole de Proteína de Soja', type: 'veg' },
+                            { label: 'Guarnição', value: 'Farofa Crocante' },
+                            { label: 'Salada', value: 'Salada Refrescante (Pepino e Tomate)' }
                         ]
                     },
                     dinner: {
                         title: 'Jantar',
                         items: [
                             { label: 'Prato Único', value: 'Macarronada Especial', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Molho à bolonhesa', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Molho branco com queijo ou sugo rico', type: 'veg' },
+                            { label: 'Opção Tradicional', value: 'Molho à Bolonhesa', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Molho Branco c/ Queijo ou Sugo Rico', type: 'veg' },
                             { label: 'Dica', value: 'Queijo ralado à vontade' },
-                            { label: 'Bebida', value: 'Suco de frutas' }
+                            { label: 'Bebida', value: 'Suco de Frutas' }
                         ]
                     }
                 }
@@ -227,29 +224,29 @@
                         title: 'Café da Manhã',
                         items: [
                             { label: 'Base', value: 'Pães variados' },
-                            { label: 'Bolo', value: 'Bolo do dia (sabor caseiro)' },
+                            { label: 'Bolo', value: 'Bolo do Dia (Sabor Caseiro)' },
                             { label: 'Fruta', value: 'Frutas da estação' },
-                            { label: 'Bebidas', value: 'Leite com chocolate e suco' }
+                            { label: 'Bebidas', value: 'Leite com chocolate, suco' }
                         ]
                     },
                     lunch: {
                         title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz branco, arroz integral e feijão' },
+                            { label: 'Base', value: 'Arroz Branco, Arroz Integral, Feijão' },
                             { label: 'Prato Principal', value: 'Strogonoff Cremoso', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Strogonoff de frango', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Strogonoff vegetariano (soja e grão de bico)', type: 'veg' },
-                            { label: 'Guarnição', value: 'Abóbora cabotiá refogada' },
-                            { label: 'Salada', value: 'Folhas frescas e vegetais' }
+                            { label: 'Opção Tradicional', value: 'Strogonoff de frango cremoso', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Strogonoff Vegetariano (Soja e Grão de Bico)', type: 'veg' },
+                            { label: 'Guarnição', value: 'Abóbora Cabotiá refogada' },
+                            { label: 'Salada', value: 'Folhas frescas e Vegetais' }
                         ]
                     },
                     dinner: {
                         title: 'Jantar',
                         items: [
-                            { label: 'Prato Principal', value: 'Escondidinho de Batata Cremoso (Gratinado)', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Recheio de carne moída', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Recheio de proteína de soja com azeitonas', type: 'veg' },
-                            { label: 'Acompanhamento', value: 'Arroz branco soltinho' },
+                            { label: 'Principal', value: 'Escondidinho de batata Cremoso (Gratinado)', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Opção Tradicional', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Opção Vegetariana', type: 'veg' },
+                            { label: 'Acompanhamento', value: 'Arroz Branco soltinho' },
                             { label: 'Sobremesa', value: 'Frutas da estação' }
                         ]
                     }
@@ -265,22 +262,22 @@
                     breakfast: {
                         title: 'Café da Manhã Regional',
                         items: [
-                            { label: 'Estrela', value: 'Cuscuz nordestino' },
+                            { label: 'Estrela', value: 'Cuscuz Nordestino' },
                             { label: 'Proteína', value: 'Ovos mexidos com queijo' },
                             { label: 'Base', value: 'Biscoitos variados' },
-                            { label: 'Bebidas', value: 'Suco de fruta e café de cevada' }
+                            { label: 'Bebidas', value: 'Suco de fruta e Café de cevada' }
                         ]
                     },
                     lunch: {
                         title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz à grega e feijão' },
-                            { label: 'Prato Principal', value: 'Almôndegas ao Molho', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Almôndega especial com legumes', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Almôndegas de soja ao molho com queijo', type: 'veg' },
-                            { label: 'Guarnição', value: 'Purê de batata' },
-                            { label: 'Salada', value: 'Salada de repolho tropical' },
-                            { label: 'Bebida', value: 'Suco de fruta' }
+                            { label: 'Base', value: 'Arroz à Grega e Feijão' },
+                            { label: 'Prato Principal', value: 'Almôndega Especial', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Almôndega Especial com Legumes', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Almôndegas de Soja ao molho com Queijo', type: 'veg' },
+                            { label: 'Guarnição', value: 'Purê de Batata' },
+                            { label: 'Salada', value: 'Salada de Repolho tropical' },
+                            { label: 'Bebida', value: 'Suco de Fruta' }
                         ]
                     },
                     dinner: {
@@ -305,27 +302,27 @@
                     breakfast: {
                         title: 'Café da Manhã',
                         items: [
-                            { label: 'Especial', value: 'Mesa de despedida (biscoitos, pães, frutas)' },
+                            { label: 'Especial', value: 'Mesa de Despedida (biscoitos, pães, frutas)' },
                             { label: 'Quente', value: 'Canjica de leite' },
-                            { label: 'Bebida', value: 'Suco de frutas' }
+                            { label: 'Bebida', value: 'Suco de Frutas' }
                         ]
                     },
                     lunch: {
                         title: 'Almoço',
                         items: [
-                            { label: 'Base', value: 'Arroz branco e feijão' },
+                            { label: 'Base', value: 'Arroz Branco e Feijão' },
                             { label: 'Prato Principal', value: 'Fricassê Cremoso ao Forno', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Fricassê tradicional (frango e milho)', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Fricassê vegetariano (palmito e milho)', type: 'veg' },
-                            { label: 'Salada', value: 'Vinagrete da casa' }
+                            { label: 'Opção Tradicional', value: 'Fricassê Cremoso Tradicional', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Fricassé Cremoso Vegetariano (Palmito/Milho)', type: 'veg' },
+                            { label: 'Salada', value: 'Vinagrete da Casa' }
                         ]
                     },
                     dinner: {
                         title: 'Kit Viagem',
                         items: [
-                            { label: 'Lanche', value: 'Sanduíche natural', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Patê cremoso de frango', type: 'meat' },
-                            { label: 'Opção Vegetariana', value: 'Patê de cenoura com ervas', type: 'veg' },
+                            { label: 'Lanche', value: 'Sanduíche Natural', highlight: true },
+                            { label: 'Opção Tradicional', value: 'Patê Cremoso de Frango', type: 'meat' },
+                            { label: 'Opção Vegetariana', value: 'Patê de Cenoura com Ervas', type: 'veg' },
                             { label: 'Fruta', value: 'Frutas para viagem' }
                         ]
                     }
@@ -334,6 +331,7 @@
         ];
 
         // --- COMPONENTES ANIMADOS ---
+
         const MenuItem = ({ label, value, type, highlight, index }) => {
             let badgeClass = "";
             let textClass = "text-[var(--text-primary)]";
