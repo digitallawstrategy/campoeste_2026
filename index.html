@@ -453,34 +453,55 @@
 
         const MenuApp = () => {
             const [activeTab, setActiveTab] = useState(menuData[0].id);
-            const contentRef = useRef(null);
 
-            // Handler para trocar de aba e garantir que o scroll suba e a aba centralize
-            const handleTabChange = (dayId) => {
-                setActiveTab(dayId);
-                
-                // Centraliza a aba horizontalmente
-                const activeBtn = document.getElementById(`tab-${dayId}`);
-                const container = document.getElementById('tabs-container');
-                if (activeBtn && container) {
-                    const scrollPos = activeBtn.offsetLeft - (container.offsetWidth / 2) + (activeBtn.offsetWidth / 2);
-                    container.scrollTo({ left: scrollPos, behavior: 'smooth' });
-                }
+            // Observer para atualizar a nav conforme o scroll
+            useEffect(() => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setActiveTab(entry.target.id);
+                            const activeBtn = document.getElementById(`tab-${entry.target.id}`);
+                            const container = document.getElementById('tabs-container');
+                            if (activeBtn && container) {
+                                const scrollPos = activeBtn.offsetLeft - (container.offsetWidth / 2) + (activeBtn.offsetWidth / 2);
+                                container.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                            }
+                        }
+                    });
+                }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
-                // Joga a tela suavemente para o início do conteúdo da aba
-                if (contentRef.current) {
-                    const yOffset = contentRef.current.getBoundingClientRect().top + window.scrollY - 100;
+                menuData.forEach(day => {
+                    const el = document.getElementById(day.id);
+                    if (el) observer.observe(el);
+                });
+
+                return () => observer.disconnect();
+            }, []);
+
+            const scrollToSection = (dayId) => {
+                const el = document.getElementById(dayId);
+                if (el) {
+                    const yOffset = el.getBoundingClientRect().top + window.scrollY - 70;
                     window.scrollTo({ top: yOffset, behavior: 'smooth' });
                 }
             };
 
-            const currentDayData = menuData.find(d => d.id === activeTab);
+            const scrollToTop = () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Ícone seta para cima
+            const ChevronUp = ({ className }) => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                    <path d="m18 15-6-6-6 6"/>
+                </svg>
+            );
 
             return (
                 <div className="min-h-screen selection:bg-[var(--accent-gold)]/30 text-[var(--text-primary)] font-sans antialiased">
                     
                     {/* Header Topo */}
-                    <header className="pt-10 pb-6 px-5 max-w-2xl mx-auto flex flex-col items-center justify-center animate-header">
+                    <header id="topo" className="pt-10 pb-6 px-5 max-w-2xl mx-auto flex flex-col items-center justify-center animate-header">
                         
                         <div className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-md text-[var(--accent-gold)] px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.1em] mb-6 border border-white/5">
                             <Utensils className="w-3 h-3" />
@@ -509,7 +530,7 @@
                         </p>
                     </header>
 
-                    {/* Navigation Tabs (Fixas no topo) */}
+                    {/* Navigation Tabs (Fixas no topo — agora rolam até a seção) */}
                     <div className="sticky top-0 z-50 glass-nav w-full shadow-md">
                         <div 
                             id="tabs-container"
@@ -523,7 +544,7 @@
                                         <button
                                             key={day.id}
                                             id={`tab-${day.id}`}
-                                            onClick={() => handleTabChange(day.id)}
+                                            onClick={() => scrollToSection(day.id)}
                                             className={`
                                                 snap-center relative px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center justify-center min-w-[80px]
                                                 ${isActive 
@@ -546,39 +567,66 @@
                         </div>
                     </div>
 
-                    {/* Main Content Area (Renderiza apenas o dia ativo, forçando recriação com a prop key) */}
-                    <main ref={contentRef} className="max-w-2xl mx-auto px-5 pt-8 pb-28 relative z-10" key={activeTab}>
+                    {/* Main Content Area — Todos os dias em sequência */}
+                    <main className="max-w-2xl mx-auto px-5 pt-8 pb-28 relative z-10">
                         
-                        <DayHeader dayData={currentDayData} />
+                        {menuData.map((dayData, dayIndex) => (
+                            <section key={dayData.id} id={dayData.id} className="mb-4">
+                                
+                                {/* Checkpoint de navegação (a partir do segundo dia) */}
+                                {dayIndex > 0 && (
+                                    <div className="flex items-center justify-center gap-3 mb-8 pt-4">
+                                        <button
+                                            onClick={() => scrollToSection(menuData[dayIndex - 1].id)}
+                                            className="flex items-center gap-1.5 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors duration-200 text-[11px] uppercase tracking-[0.08em] font-semibold px-3 py-2 rounded-lg hover:bg-white/5"
+                                        >
+                                            <ChevronUp className="w-3.5 h-3.5" />
+                                            {menuData[dayIndex - 1].day}
+                                        </button>
+                                        <span className="w-px h-4 bg-white/10"></span>
+                                        <button
+                                            onClick={scrollToTop}
+                                            className="flex items-center gap-1.5 text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors duration-200 text-[11px] uppercase tracking-[0.08em] font-semibold px-3 py-2 rounded-lg hover:bg-white/5"
+                                        >
+                                            <ChevronUp className="w-3.5 h-3.5" />
+                                            Início
+                                        </button>
+                                    </div>
+                                )}
 
-                        <div className="space-y-5">
-                            {currentDayData.meals.breakfast && (
-                                <MealSection 
-                                    title={currentDayData.meals.breakfast.title}
-                                    items={currentDayData.meals.breakfast.items}
-                                    icon={Coffee}
-                                    sectionDelay={100}
-                                />
-                            )}
-                            
-                            {currentDayData.meals.lunch && (
-                                <MealSection 
-                                    title={currentDayData.meals.lunch.title}
-                                    items={currentDayData.meals.lunch.items}
-                                    icon={Sun}
-                                    sectionDelay={150}
-                                />
-                            )}
-                            
-                            {currentDayData.meals.dinner && (
-                                <MealSection 
-                                    title={currentDayData.meals.dinner.title}
-                                    items={currentDayData.meals.dinner.items}
-                                    icon={Moon}
-                                    sectionDelay={200}
-                                />
-                            )}
-                        </div>
+                                <DayHeader dayData={dayData} />
+
+                                <div className="space-y-5">
+                                    {dayData.meals.breakfast && (
+                                        <MealSection 
+                                            title={dayData.meals.breakfast.title}
+                                            items={dayData.meals.breakfast.items}
+                                            icon={Coffee}
+                                            sectionDelay={100}
+                                        />
+                                    )}
+                                    
+                                    {dayData.meals.lunch && (
+                                        <MealSection 
+                                            title={dayData.meals.lunch.title}
+                                            items={dayData.meals.lunch.items}
+                                            icon={Sun}
+                                            sectionDelay={150}
+                                        />
+                                    )}
+                                    
+                                    {dayData.meals.dinner && (
+                                        <MealSection 
+                                            title={dayData.meals.dinner.title}
+                                            items={dayData.meals.dinner.items}
+                                            icon={Moon}
+                                            sectionDelay={200}
+                                        />
+                                    )}
+                                </div>
+
+                            </section>
+                        ))}
 
                         {/* Footer Minimalista */}
                         <div className="mt-10 mb-8 flex flex-col items-center justify-center text-center animate-slide-up opacity-60" style={{animationDelay: '300ms'}}>
