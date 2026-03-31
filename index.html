@@ -148,7 +148,7 @@
                             { label: 'Recepção', value: 'Pão francês, pão de forma e torradas' },
                             { label: 'Complementos', value: 'Frios variados, manteiga e geleia' },
                             { label: 'Fruta', value: 'Frutas da estação (banana e maçã)' },
-                            { label: 'Bebidas', value: 'Café forte, leite e achocolatado' }
+                            { label: 'Bebidas', value: 'Café de cevada, leite e achocolatado' }
                         ]
                     },
                     lunch: {
@@ -195,7 +195,7 @@
                         items: [
                             { label: 'Base', value: 'Arroz Branco, Feijão' },
                             { label: 'Prato Principal', value: 'Rocambole ao Forno Gratinado', highlight: true },
-                            { label: 'Opção Tradicional', value: 'Rocambole de Carne ao Forno', type: 'meat' },
+                            { label: 'Opção Tradicional', value: 'Rocambole de Carne moída ao Forno', type: 'meat' },
                             { label: 'Opção Vegetariana', value: 'Rocambole de Proteína de Soja', type: 'veg' },
                             { label: 'Guarnição', value: 'Farofa Crocante' },
                             { label: 'Salada', value: 'Salada Refrescante (Pepino e Tomate)' }
@@ -364,12 +364,12 @@
                         </span>
                         {type === 'meat' && (
                             <span className={`text-[10px] px-2 py-0.5 rounded-md uppercase font-semibold tracking-wide ${badgeClass}`}>
-                                Opção Carne
+                                Opção Tradicional
                             </span>
                         )}
                         {type === 'veg' && (
                             <span className={`text-[10px] px-2 py-0.5 rounded-md uppercase font-semibold tracking-wide ${badgeClass}`}>
-                                Opção Veg
+                                Opção Vegetariana
                             </span>
                         )}
                     </div>
